@@ -20,19 +20,22 @@ namespace BookLib.Tests
         private Book _zeroPriceBook = new Book("ZeroPrice", 0) { Id = 7 };
         private List<Book> _testList = new List<Book>() { };
         private BooksRepository _booksRepo = new BooksRepository();
-        [TestInitialize]
         
         [TestMethod()]
         public void AddTest()
         {
+            Assert.AreEqual<int>(0, _booksRepo.Get().Count());
+
             _booksRepo.Add(_validBook);
+
+            Assert.AreEqual<int>(1, _booksRepo.Get().Count());
+
             Assert.ThrowsException<ArgumentNullException>(() => _booksRepo.Add(_nullTitleBook));
             Assert.ThrowsException<ArgumentException>(() => _booksRepo.Add(_shortTitleBook));
             Assert.ThrowsException<ArgumentException>(() => _booksRepo.Add(_priceTooHighBook));
             Assert.ThrowsException<ArgumentException>(() => _booksRepo.Add(_defaultPriceBook));
             Assert.ThrowsException<ArgumentException>(() => _booksRepo.Add(_negativePriceBook));
             Assert.ThrowsException<ArgumentException>(() => _booksRepo.Add(_zeroPriceBook));
-            Assert.AreEqual(1, _booksRepo.Get().Count());
         }
 
         [TestMethod()]

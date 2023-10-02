@@ -11,7 +11,9 @@ namespace BookLib
         private List<Book> _books = new List<Book>();
         public Book Add(Book book)
         {
-            throw new NotImplementedException();
+            book.Validate();
+            _books.Add(book);
+            return book;
         }
 
         public Book Delete(int id)
@@ -21,7 +23,8 @@ namespace BookLib
 
         public List<Book> Get()
         {
-            throw new NotImplementedException();
+            List<Book> result = new List<Book> (_books);
+            return result;
         }
 
         public Book GetById(int id)
