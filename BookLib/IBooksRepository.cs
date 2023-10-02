@@ -15,7 +15,7 @@ namespace BookLib
         /// Returnerer en kopi af listen af alle Book objekter: Brug en copy constructor.
         /// </summary>
         /// <returns>List<Book></returns>
-        Book Get();
+        List<Book> Get();
         /// <summary>
         /// Returnerer Book objektet med det angivne id - eller null.
         /// </summary>
